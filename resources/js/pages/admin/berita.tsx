@@ -174,6 +174,7 @@ const handleDetail = (berita: any) => {
               </CardContent>
             </Card>
           </div>
+          
 
           {/* Table */}
           <Card className='border-none shadow-xl shadow-[#CFE6FF] dark:shadow-black/20'>
