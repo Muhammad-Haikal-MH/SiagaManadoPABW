@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Weather from "./components/Weather";
 
 const Berita = ({ auth }: any) => {
+    
   return (
     <>
       <Navbar auth={auth} />
@@ -15,7 +16,7 @@ const Berita = ({ auth }: any) => {
 
         {/* BERITA */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 px-6 md:px-14">
-          <div className="bg-[#CFE6FF] p-4 rounded-2xl shadow-md">
+          <div className="bg-[#CFE6FF] dark:bg-[#1E293B] p-4 rounded-2xl shadow-md">
             <h3 className="text-[#1C398E] font-semibold text-xl mb-4">
               Listrik Padam 19 Jam, Antrean Panjang Terjadi di SPBU
             </h3>

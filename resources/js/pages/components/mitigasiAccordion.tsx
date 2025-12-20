@@ -17,7 +17,7 @@ export default function MitigasiAccordion({
   return (
     <Accordion type="single" collapsible className="mb-10">
       <AccordionItem value={title}>
-        <AccordionTrigger className="text-xl font-semibold text-[#1C398E]">
+        <AccordionTrigger className="text-xl font-semibold text-[#1C398E] dark:text-[#F1F5F9]">
           {title}
         </AccordionTrigger>
 

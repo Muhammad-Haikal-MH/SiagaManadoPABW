@@ -23,10 +23,13 @@
         <style>
             html {
                 background-color: #EEF4FF;
+                /* scroll-behavior: smooth; */
             }
 
             html.dark {
-                background-color: #0B1221;
+                /* background-color: #0B1221; */
+                background-color: #0F172A;
+                /* scroll-behavior: smooth; */
                 /* background-color: #101d34; */
                 /* color: black; */
             }

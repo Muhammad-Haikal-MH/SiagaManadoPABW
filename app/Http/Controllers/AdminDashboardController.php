@@ -5,12 +5,13 @@ use App\Models\User;
 use App\Models\Laporan;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\DB;
+use App\Models\Berita;
 
 use Illuminate\Http\Request;
 
 class AdminDashboardController extends Controller
 {
-     public function index()
+    public function index()
     {
         $laporanPerBulan = Laporan::select(
             DB::raw("MONTH(tanggal) as bulan"),
@@ -55,4 +56,5 @@ class AdminDashboardController extends Controller
         $laporan->delete();
         return back()->with('success', 'Laporan dihapus');
     }
+
 }

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('laporans', function (Blueprint $table) {
                 $table->id();
 
-                $table->string('foto')->nullable();
+                $table->string('foto');
                 $table->string('lokasi');
                 $table->text('deskripsi');
 

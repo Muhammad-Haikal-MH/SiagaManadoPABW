@@ -15,20 +15,20 @@ export default function MitigasiDetail({ slug }: { slug: string }) {
     <div className="px-6 md:px-14 py-10 max-w-7xl mx-auto">
       <Link
         href="/mitigasi"
-        className="flex items-center gap-2 text-[#1C398E] mb-6"
+        className="flex items-center gap-2 text-[#1C398E] dark:text-[#F1F5F9] mb-6"
       >
         <ArrowLeft size={18} />
         Kembali
       </Link>
 
-      <h1 className="text-3xl font-bold text-[#1C398E] mb-2">
+      <h1 className="text-3xl font-bold text-[#1C398E] dark:text-[#F1F5F9] mb-2">
         {data.title}
       </h1>
 
-      <p className="text-[#1C398E]/80 mb-10">
+      <p className="text-[#1C398E]/80 dark:text-[#F1F5F9] mb-10">
         {data.description}
       </p>
-    
+
       <MitigasiAccordion title="Sebelum Bencana" data={data.sebelum} />
       <MitigasiAccordion title="Saat Bencana" data={data.saat} />
       <MitigasiAccordion title="Setelah Bencana" data={data.setelah} />

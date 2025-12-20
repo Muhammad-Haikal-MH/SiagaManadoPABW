@@ -41,8 +41,17 @@ const { appearance, updateAppearance } = useAppearance();
   const handleLogout = () => post(logout().url);
 
   // ACTIVE MENU
-  const isActive = (path: string) =>
-    url.startsWith(path) ? "text-[#1C398E] font-semibold border-b-2 border-[#1C398E]": "text-[#1C398E] hover:text-blue-300";
+  const isActive = (path: string) => {
+    if (path === "/") {
+        return url === "/"
+        ? "text-[#1C398E] dark:text-[#F1F5F9]  font-semibold border-[#1C398E]"
+        : "text-[#1C398E] dark:text-[#F1F5F9] dark:hover:text-[#3B82F6] hover:text-blue-300";
+    }
+
+    return url.startsWith(path)
+        ? "text-[#1C398E] dark:text-[#F1F5F9] font-semibold border-[#1C398E]"
+        : "text-[#1C398E] dark:text-[#F1F5F9] dark:hover:text-[#3B82F6] hover:text-blue-300";
+    };
 
   // SCROLL BLUR EFFECT
   useEffect(() => {
@@ -59,7 +68,7 @@ const { appearance, updateAppearance } = useAppearance();
       {/* NAVBAR */}
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-300
-        ${scrolled ? "backdrop-blur-md bg-white/50 " : "bg-transparent"}
+        ${scrolled ? "backdrop-blur-md bg-white/50 dark:bg-white/10 " : "bg-transparent"}
       `}
       >
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
@@ -67,7 +76,13 @@ const { appearance, updateAppearance } = useAppearance();
           <img
             src="/images/SiagamanadoDark.png"
             alt="Siaga Manado"
-            className="w-44"
+            className="w-44 dark:hidden"
+          />
+
+          <img
+            src="/images/SiagamanadoLight.png"
+            alt="Siaga Manado"
+            className="w-44 hidden dark:block"
           />
 
           {/* DESKTOP MENU */}
@@ -91,7 +106,7 @@ const { appearance, updateAppearance } = useAppearance();
                 className="p-2 rounded-xl transition
                     text-[#1C398E]
                     hover:bg-blue-100
-                    dark:text-[#CFE6FF]
+                    dark:text-[#F1F5F9]
                     dark:hover:bg-gray-700 cursor-pointer"
                 >
                 {appearance === 'dark' ? (
@@ -105,13 +120,13 @@ const { appearance, updateAppearance } = useAppearance();
               <>
                 <Link
                   href={login()}
-                  className="border px-4 py-1 rounded-2xl text-[#1C398E]"
+                  className="border px-4 py-1 rounded-2xl text-[#1C398E] hover:bg-[#1C398E] hover:text-white dark:text-[#F1F5F9] dark:hover:bg-[#3B82F6]"
                 >
                   Login
                 </Link>
                 <Link
                   href={register()}
-                  className="bg-[#1C398E] text-white px-4 py-1 rounded-2xl"
+                  className="bg-[#1C398E] text-white px-4 py-1 rounded-2xl dark:bg-[#0A84FF] dark:hover:bg-[#1E293B]"
                 >
                   Register
                 </Link>
@@ -131,11 +146,11 @@ const { appearance, updateAppearance } = useAppearance();
                   </Button>
                 </DropdownMenuTrigger>
 
-                <DropdownMenuContent align="end" className="w-40 rounded-xl">
+                <DropdownMenuContent align="end" className="w-40 rounded-xl bg-white/20 backdrop-blur-md">
                   <DropdownMenuItem asChild>
                     <Link
                       href="settings/profile"
-                      className="flex text-[#1C398E] justify-between items-center w-full cursor-pointer"
+                      className="flex text-[#1C398E] dark:hover:text-[#94A3B8] dark:text-[#F1F5F9] justify-between items-center w-full cursor-pointer"
                     >
                       Profile <IoPersonOutline />
                     </Link>
@@ -143,7 +158,7 @@ const { appearance, updateAppearance } = useAppearance();
 
                   <DropdownMenuItem
                     onClick={handleLogout}
-                    className="text-red-600 flex justify-between cursor-pointer"
+                    className="text-red-600 dark:hover:text-[#94A3B8] flex justify-between cursor-pointer"
                   >
                     Logout <IoLogOutOutline />
                   </DropdownMenuItem>

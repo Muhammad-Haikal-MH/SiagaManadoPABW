@@ -8,34 +8,37 @@ import { swalCancelled, swalConfirm, swalDetailLaporan, swalSuccess } from '../c
 import Swal from 'sweetalert2';
 import AdminSidebar from '../components/Sidebar';
 import { adminMenus } from './admin.constant';
+import { Input } from '@/components/ui/input';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
+import BeritaModal from '../components/beritaModal';
 
 interface propss {
     stats: {
-        totalUsers: number;
-        totalLaporan: number;
-        laporanBaru: number;
-        laporanSelesai: number;
+        totalBerita: number;
+        beritaDraft: number;
+        beritaPublished: number;
     };
-    laporans: Array<any>;
+    beritas: Array<any>;
     chart: {
     total: { bulan: number; total: number }[];
-    selesai: { bulan: number; total: number }[];
+    published: { bulan: number; total: number }[];
     }
 }
 
-const DashboardAdmin = (pros: propss) => {
-    const { stats, laporans, chart  } = pros;
+const DashboardBerita = (pros: propss) => {
+    const { stats, beritas, chart  } = pros;
     const [sidebarOpen, setSidebarOpen] = useState(true);
+    const [open, setOpen] = useState(false);
+
 
   // Data untuk cards
   const statsData = [
-  { title: 'Total Users', value: stats.totalUsers, icon: Users },
-  { title: 'Total Laporan', value: stats.totalLaporan, icon: FileText },
-  { title: 'Laporan Baru', value: stats.laporanBaru, icon: FileText },
-  { title: 'Laporan Selesai', value: stats.laporanSelesai, icon: CheckCircle },
+  { title: 'Total Berita', value: stats.totalBerita, icon: FileText },
+  { title: 'Berita Draft', value: stats.beritaDraft, icon: FileText },
+  { title: 'Berita Published', value: stats.beritaPublished, icon: CheckCircle },
 ];
+
 
 
   const bulanMap = [
@@ -43,12 +46,12 @@ const DashboardAdmin = (pros: propss) => {
     "Jul", "Agu", "Sep", "Okt", "Nov", "Des"
   ];
 
-    const chartTotalLaporan = chart.total.map(item => ({
+    const chartTotalBerita = chart.total.map(item => ({
         name: bulanMap[item.bulan],
         value: item.total,
     }));
 
-    const chartLaporanSelesai = chart.selesai.map(item => ({
+    const chartBeritaPublished = chart.published.map(item => ({
         name: bulanMap[item.bulan],
         value: item.total,
     }));
@@ -128,28 +131,28 @@ const handleDetail = (laporan: any) => {
   return (
     <div className="flex h-screen ">
       {/* Sidebar */}
-      <AdminSidebar menus={adminMenus} onToggle={setSidebarOpen}  />
+      <AdminSidebar menus={adminMenus} onToggle={setSidebarOpen} />
 
       {/* Main Content */}
       <main className={cn(
-          " transition-all duration-300 w-full",
+        " transition-all duration-300 w-full",
           sidebarOpen
           ? "md:ml-0 "
           : "md:ml-20"
       )}>
         <div className="p-8">
           {/* Stats Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {statsData.map((stat, index) => (
-              <Card key={index} className='border-none shadow-xl shadow-[#CFE6FF] dark:shadow-black/20'>
+              <Card key={index} className='border-none shadow-xl shadow-[#CFE6FF]'>
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="font-medium text-[#1C398E] dark:text-[#F1F5F9] mb-1">{stat.title}</p>
-                      <h3 className="text-2xl font-bold text-[#1C398E] dark:text-[#F1F5F9]">{stat.value}</h3>
+                      <p className="font-medium text-[#1C398E] mb-1">{stat.title}</p>
+                      <h3 className="text-2xl font-bold text-[#1C398E]">{stat.value}</h3>
                     </div>
                     <div className={`p-3 rounded-lg`}>
-                      <stat.icon size={24} className="text-[#1C398E] dark:text-[#F1F5F9]" />
+                      <stat.icon size={24} className="text-[#1C398E]" />
                     </div>
                   </div>
                 </CardContent>
@@ -159,13 +162,13 @@ const handleDetail = (laporan: any) => {
 
           {/* Charts */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-            <Card className='border-none shadow-xl shadow-[#CFE6FF] dark:shadow-black/20'>
+            <Card className='border-none shadow-xl shadow-[#CFE6FF]'>
               <CardHeader>
-                <CardTitle className='text-[#1C398E] dark:text-[#F1F5F9]'>Statistik Total Laporan</CardTitle>
+                <CardTitle className='text-[#1C398E]'>Statistik Total Berita</CardTitle>
               </CardHeader>
               <CardContent>
                 <ResponsiveContainer width="100%" height={300}>
-                  <BarChart data={chartTotalLaporan} >
+                  <BarChart data={chartTotalBerita} >
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="name" />
                     <YAxis allowDecimals={false} />
@@ -176,13 +179,13 @@ const handleDetail = (laporan: any) => {
               </CardContent>
             </Card>
 
-            <Card className='border-none shadow-xl shadow-[#CFE6FF] dark:shadow-black/20'>
+            <Card className='border-none shadow-xl shadow-[#CFE6FF]'>
               <CardHeader>
-                <CardTitle className='text-[#1C398E] dark:text-[#F1F5F9]'>Statistik laporan Selesai</CardTitle>
+                <CardTitle className='text-[#1C398E]'>Statistik Berita di Publish</CardTitle>
               </CardHeader>
               <CardContent>
                 <ResponsiveContainer width="100%" height={300}>
-                  <LineChart data={chartLaporanSelesai}>
+                  <LineChart data={chartBeritaPublished}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="name" />
                     <YAxis allowDecimals={false} />
@@ -195,52 +198,52 @@ const handleDetail = (laporan: any) => {
           </div>
 
           {/* Table */}
-          <Card className='border-none shadow-xl shadow-[#CFE6FF] dark:shadow-black/20'>
-            <CardHeader>
-              <CardTitle className='text-[#1C398E] dark:text-[#F1F5F9]'>Data Pelaporan</CardTitle>
+          <Card className='border-none shadow-xl shadow-[#CFE6FF]'>
+            <CardHeader >
+              <CardTitle className='text-[#1C398E] px-2'>Data Berita</CardTitle>
+              <div className='flex justify-between pr-10 py-3'>
+                <Input type='search' className='w-52 rounded-2xl text-[#1C398E] placeholder:text-blue-500' placeholder='cari berita' />
+                <Button className='px-4 py-5 bg-[#CFE6FF] text-[#1C398E] cursor-pointer hover:bg-blue-300 rounded-xl ' onClick={() => setOpen(true)}>Tambahkan Berita</Button>
+                <BeritaModal open={open} onClose={setOpen} />
+              </div>
             </CardHeader>
             <CardContent>
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b border-blue-300 dark:border-[#1C398E]">
-                      <th className="text-left py-3 px-4 text-sm font-semibold text-[#1C398E] dark:text-[#F1F5F9]">Name Pelapor</th>
-                      <th className="text-left py-3 px-4 text-sm font-semibold text-[#1C398E] dark:text-[#F1F5F9]">Jenis Bencana</th>
-                      <th className="text-left py-3 px-4 text-sm font-semibold text-[#1C398E] dark:text-[#F1F5F9]">Lokasi</th>
-                      <th className="text-left py-3 px-4 text-sm font-semibold text-[#1C398E] dark:text-[#F1F5F9]">Status</th>
-                      <th className="text-left py-3 px-4 text-sm font-semibold text-[#1C398E] dark:text-[#F1F5F9]">Date</th>
-                      <th className="text-left py-3 px-4 text-sm font-semibold text-[#1C398E] dark:text-[#F1F5F9]">Actions</th>
+                    <tr className="border-b border-blue-300">
+                      <th className="text-left py-3 px-4 text-sm font-semibold text-[#1C398E]">Judul Berita</th>
+                      <th className="text-left py-3 px-4 text-sm font-semibold text-[#1C398E]">lokasi</th>
+                      <th className="text-left py-3 px-4 text-sm font-semibold text-[#1C398E]">jenis</th>
+                      <th className="text-left py-3 px-4 text-sm font-semibold text-[#1C398E]">Status</th>
+                      <th className="text-left py-3 px-4 text-sm font-semibold text-[#1C398E]">Tanggal</th>
+                      <th className="text-left py-3 px-4 text-sm font-semibold text-[#1C398E]">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {laporans.map((row) => (
-                      <tr key={row.id} className="border-b border-[#CFE6FF] hover:bg-gray-50 dark:hover:bg-white/10 dark:border-[#1C398E]">
-                        <td className="py-3 px-4 text-sm text-[#1C398E] dark:text-[#F1F5F9]">{row.nama}</td>
-                        <td className="py-3 px-4 text-sm text-[#1C398E] dark:text-[#F1F5F9]">{row.jenis}</td>
-                        <td className="py-3 px-4 text-sm text-[#1C398E] dark:text-[#F1F5F9]">{row.lokasi}</td>
+                    {beritas.map((row) => (
+                      <tr key={row.id} className="border-b border-[#CFE6FF] hover:bg-gray-50">
+                        <td className="py-3 px-4 text-sm text-[#1C398E]">{row.judul}</td>
+                        <td className="py-3 px-4 text-sm text-[#1C398E]">{row.lokasi}</td>
+                        <td className="py-3 px-4 text-sm text-[#1C398E]">{row.jenis}</td>
                         <td className="py-3 px-4">
                           <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                            row.status === 'menunggu'
+                            row.status === 'draft'
                             ? 'bg-yellow-100 text-yellow-800'
-                            : row.status === 'diverifikasi'
-                            ? 'bg-blue-100 text-blue-800'
-                            : row.status === 'diproses'
-                            ? 'bg-purple-100 text-purple-800'
-                            : row.status === 'selesai'
-                            ? 'bg-green-100 text-green-800'
-                            : 'bg-red-100 text-red-800'
+                            : row.status === 'published'
+
                         }`}>
                             {row.status}
                           </span>
                         </td>
-                        <td className="py-3 px-4 text-sm text-[#1C398E] dark:text-[#F1F5F9]">{row.tanggal}</td>
+                        <td className="py-3 px-4 text-sm text-[#1C398E]">{row.tanggal}</td>
                         <td className="py-3 px-4">
                           <div className="flex items-center gap-2">
                             <Button
                               size="sm"
                               variant="ghost"
                               onClick={() => handleVerify(row.id)}
-                              className=" text-[#1C398E] bg-[#CFE6FF] hover:bg-blue-300 dark:text-[#F1F5F9] dark:bg-[#3B82F6] dark:hover:bg-[#1C398E] cursor-pointer rounded-xl"
+                              className=" text-[#1C398E] bg-[#CFE6FF] hover:bg-blue-300 cursor-pointer rounded-xl"
                             >
                               <CheckCircle size={16} />
                               <span>Verifikasi</span>
@@ -249,14 +252,14 @@ const handleDetail = (laporan: any) => {
                               size="sm"
                               variant="ghost"
                               onClick={() => handleReject(row.id)}
-                              className="text-[#1C398E] bg-red-300 hover:bg-red-400 dark:text-[#F1F5F9] dark:bg-red-500 dark:hover:bg-red-900 cursor-pointer rounded-xl"
+                              className="text-[#1C398E] bg-red-300 hover:bg-red-400 cursor-pointer rounded-xl"
                             >
                               <XCircle size={16} />
                               <span>Tolak</span>
                             </Button>
                             <DropdownMenu modal={false}>
                               <DropdownMenuTrigger asChild>
-                                <Button size="sm" variant="ghost" className="hover:bg-blue-100 rounded-2xl hover:text-[#1C398E] dark:hover:bg-white/10 dark:hover:text-[#F1F5F9]">
+                                <Button size="sm" variant="ghost" className="hover:bg-blue-100 rounded-2xl">
                                   <MoreVertical size={16} />
                                 </Button>
                               </DropdownMenuTrigger>
@@ -289,4 +292,4 @@ const handleDetail = (laporan: any) => {
   );
 };
 
-export default DashboardAdmin;
+export default DashboardBerita;

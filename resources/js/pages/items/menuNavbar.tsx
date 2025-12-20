@@ -1,4 +1,3 @@
-import { berita, homepage } from "@/routes";
 
 interface Menu {
   name: string;
@@ -6,8 +5,7 @@ interface Menu {
 }
 
 export const menus: Menu[] = [
-  { name: "Beranda", href: '/homepage'  },
+  { name: "Beranda", href: '/'  },
   { name: "Berita", href: '/berita' },
   { name: "Mitigasi", href: "/mitigasi" },
-  { name: "Kontak", href: "/#kontak" },
 ];

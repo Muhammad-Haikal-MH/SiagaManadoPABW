@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 import { useState } from "react";
 import LaporModal from "./components/LaporModal";
+import { swalSuccess } from "./components/Alert";
 
 export default function Homepage({ auth }: any) {
 
@@ -49,7 +50,7 @@ export default function Homepage({ auth }: any) {
                         {user ? (
                             <>
                                 <Button
-                                    className="bg-[#1C398E] dark:bg-[#CFE6FF] dark:text-[#1C398E] hover:bg-blue-300 text-white md:text-lg font-bold md:py-7 md:px-8 py-2 px-4 rounded-full cursor-pointer"
+                                    className="bg-[#1C398E] dark:bg-[#CFE6FF] dark:hover:bg-blue-300 dark:text-[#1C398E] hover:bg-blue-300 text-white md:text-lg font-bold md:py-7 md:px-8 py-2 px-4 rounded-full cursor-pointer"
                                     onClick={() => setOpen(true)}
                                 >
                                     Laporkan
@@ -60,7 +61,7 @@ export default function Homepage({ auth }: any) {
                         ) : (
                             <Link
                                 href="/login"
-                                className="bg-[#1C398E] hover:bg-blue-300 text-white md:text-lg font-bold md:py-4 md:px-8 py-2 px-4 rounded-full"
+                                className="bg-[#1C398E] dark:bg-[#3B82F6]  hover:dark:bg-[#1E293B] dark:text-[#F1F5F9] hover:bg-blue-300 text-white md:text-lg font-bold md:py-4 md:px-8 py-2 px-4 rounded-full"
                             >
                                 Laporkan
                             </Link>
@@ -79,26 +80,26 @@ export default function Homepage({ auth }: any) {
             <section className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-7 mt-8 mx-4 max-w-[1224px] xl:mx-auto">
                 <Link
                     href="/mitigasi"
-                    className="bg-[#CFE6FF] dark:bg-[#162035] dark:text-[#EEF4FF] p-6 w-3/4 rounded-4xl hover:scale-105 transition-transform duration-300"
+                    className="bg-[#CFE6FF] dark:bg-[#1E293B] dark:text-[#F1F5F9] p-6 w-3/4 rounded-4xl hover:scale-105 transition-transform duration-300"
                 >
                     <div className="flex justify-between items-center">
-                        <h1 className="text-2xl font-semibold text-[#1C398E] dark:text-[#EEF4FF]">Mitigasi</h1>
-                        <IoIosArrowDroprightCircle size={45} className="text-[#1C398E] dark:text-[#EEF4FF]"/>
+                        <h1 className="text-2xl font-semibold text-[#1C398E] dark:text-[#F1F5F9]">Mitigasi</h1>
+                        <IoIosArrowDroprightCircle size={45} className="text-[#1C398E] dark:text-[#F1F5F9]"/>
                     </div>
-                        <div className="justify-end flex mt-8 text-[#1C398E] dark:text-[#EEF4FF]">
+                        <div className="justify-end flex mt-8 text-[#1C398E] dark:text-[#F1F5F9]">
                             <FaPersonRunning size={45} />
                         </div>
                 </Link>
 
                 <Link
                     href="/berita"
-                    className="bg-[#CFE6FF] p-6 w-3/4 rounded-4xl hover:scale-105 transition-transform duration-300"
+                    className="bg-[#CFE6FF] dark:bg-[#1E293B] p-6 w-3/4 rounded-4xl hover:scale-105 transition-transform duration-300"
                 >
                     <div className="flex justify-between items-center">
-                        <h1 className="text-2xl font-semibold text-[#1C398E]">Berita</h1>
-                        <IoIosArrowDroprightCircle size={45} className="text-[#1C398E]"/>
+                        <h1 className="text-2xl font-semibold text-[#1C398E] dark:text-[#F1F5F9]">Berita</h1>
+                        <IoIosArrowDroprightCircle size={45} className="text-[#1C398E] dark:text-[#F1F5F9]"/>
                     </div>
-                        <div className="justify-end flex mt-8 text-[#1C398E]">
+                        <div className="justify-end flex mt-8 text-[#1C398E] dark:text-[#F1F5F9]">
                             <IoNewspaperOutline size={45} />
                         </div>
                 </Link>
@@ -108,7 +109,7 @@ export default function Homepage({ auth }: any) {
             <section>
                 <div className="container mx-auto p-20">
                     <h1
-                        className="text-4xl font-bold text-center mt-10 text-[#1C398E]"
+                        className="text-4xl font-bold text-center mt-10 text-[#F1F5F9]"
                         id="kontak"
                     >
                         Kontak Darurat
@@ -119,13 +120,13 @@ export default function Homepage({ auth }: any) {
                     {kontakDarurat.map((item) => (
                         <div
                             key={item.title}
-                            className="bg-[#CFE6FF] p-6 w-full h-72 rounded-4xl hover:scale-105 transition duration-300 cursor-pointer"
+                            className="bg-[#CFE6FF] dark:bg-[#1E293B] p-6 w-full h-72 rounded-4xl hover:scale-105 transition duration-300 cursor-pointer"
                         >
                             <div className="flex justify-between items-center">
-                                <h1 className="text-2xl font-semibold text-[#1C398E] ">
+                                <h1 className="text-2xl font-semibold text-[#1C398E] dark:text-[#F1F5F9]">
                                     {item.title}
                                 </h1>
-                                <IoIosArrowDroprightCircle size={45} className="text-[#1C398E]"/>
+                                <IoIosArrowDroprightCircle size={45} className="text-[#1C398E] dark:text-[#F1F5F9]"/>
                             </div>
 
                             <div className="flex justify-end mt-8">
@@ -146,77 +147,80 @@ export default function Homepage({ auth }: any) {
 
             {/* LEFT */}
             <div>
-            <h1 className="text-2xl font-bold text-[#1C398E] mb-4">
+            <h1 className="text-2xl font-bold text-[#1C398E] mb-4 dark:text-[#F1F5F9]">
                 Lebih Dekat
             </h1>
 
-            <p className="text-[#1C398E] mb-6 leading-relaxed">
+            <p className="text-[#1C398E] mb-6 leading-relaxed dark:text-[#F1F5F9]">
                 Ayo lebih dekat dengan kita Siaga Manado, berikan saran dan
                 feedback agar aplikasi ini menjadi lebih baik.
             </p>
 
             <div className="flex items-center mb-4">
-                <FaMapMarkerAlt className="text-3xl text-[#1C398E] mr-3" />
+                <FaMapMarkerAlt className="text-3xl text-[#1C398E] mr-3 dark:text-[#F1F5F9]" />
                 <div>
-                <p className="font-bold text-[#1C398E]">Alamat</p>
+                <p className="font-bold text-[#1C398E] dark:text-[#F1F5F9]">Alamat</p>
                 <p>Bojongsoang, Bandung, Indonesia</p>
                 </div>
             </div>
 
             <div className="flex items-center mb-4">
-                <FaPhoneAlt className="text-3xl text-[#1C398E] mr-3" />
+                <FaPhoneAlt className="text-3xl text-[#1C398E] mr-3 dark:text-[#F1F5F9]" />
                 <div>
-                <p className="font-bold text-[#1C398E]">No. Telepon</p>
-                <p className="text-[#1C398E]">+123-456-7890</p>
+                <p className="font-bold text-[#1C398E] dark:text-[#F1F5F9]">No. Telepon</p>
+                <p className="text-[#1C398E] dark:text-[#F1F5F9]">+123-456-7890</p>
                 </div>
             </div>
 
             <div className="flex items-center mb-6">
-                <FaEnvelope className="text-3xl text-[#1C398E] mr-3" />
+                <FaEnvelope className="text-3xl text-[#1C398E] mr-3 dark:text-[#F1F5F9]" />
                 <div>
-                <p className="font-bold text-[#1C398E]">Email</p>
-                <p className="text-[#1C398E]">siagamanado@telkomuniversity.com</p>
+                <p className="font-bold text-[#1C398E] dark:text-[#F1F5F9]">Email</p>
+                <p className="text-[#1C398E] dark:text-[#F1F5F9]">siagamanado@telkomuniversity.com</p>
                 </div>
             </div>
 
-            <p className="font-bold text-[#1C398E] mb-2">Ikuti Kami:</p>
-            <div className="flex space-x-4 text-2xl text-[#1C398E]">
-                <FaFacebook className="hover:text-blue-300 cursor-pointer" />
-                <FaTwitter className="hover:text-blue-300 cursor-pointer" />
-                <FaInstagram className="hover:text-blue-300 cursor-pointer" />
-                <FaYoutube className="hover:text-blue-300 cursor-pointer" />
+            <p className="font-bold text-[#1C398E] mb-2 dark:text-[#F1F5F9]">Ikuti Kami:</p>
+            <div className="flex space-x-4 text-2xl text-[#1C398E] dark:text-[#F1F5F9]">
+                <FaFacebook className="hover:text-blue-300 dark:hover:text-[#94A3B8]  cursor-pointer" />
+                <FaTwitter className="hover:text-blue-300 dark:hover:text-[#94A3B8] cursor-pointer" />
+                <FaInstagram className="hover:text-blue-300 dark:hover:text-[#94A3B8] cursor-pointer" />
+                <FaYoutube className="hover:text-blue-300 dark:hover:text-[#94A3B8] cursor-pointer" />
             </div>
             </div>
 
             {/* RIGHT */}
-            <div className="bg-[#CFE6FF] p-6 rounded-2xl shadow-lg">
-            <h2 className="text-2xl font-bold text-blue-900 mb-4">
+            <div className="bg-[#CFE6FF] p-6 rounded-2xl shadow-lg dark:bg-[#1E293B]">
+            <h2 className="text-2xl font-bold text-blue-900 mb-4 dark:text-[#F1F5F9]">
                 Kirim Pesan
             </h2>
 
-            <Form className="space-y-4" disableWhileProcessing>
-                {({ processing, errors,  }) => (
+            <Form className="space-y-4" disableWhileProcessing method="post" action="/feedback"
+                onSuccess={() => swalSuccess("feedback berhasil dikirim !")}
+                resetOnSuccess={true}
+            >
+                {({ processing, errors, recentlySuccessful  }) => (
 
                 <div className="grid gap-6 font-normal">
                     <div className="grid gap-2 px-10">
-                        <Input className="border-0 border-b border-b-[#1C398E] focus:rounded-lg text-[#1C398E] focus:border-b-blue-400 transition-all duration-200 focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-                            id="name" type="text" required autoFocus tabIndex={1} autoComplete="name" name="name" placeholder="Full name"/>
-                        <InputError message={errors.deskripsi} className="mt-2" />
+                        <Input className="border-0 border-b border-b-[#1C398E] dark:border-b-[#F1F5F9] focus:rounded-lg text-[#1C398E] dark:text-[#F1F5F9] focus:border-b-blue-400 dark:focus:border-b-[#F1F5F9] transition-all duration-200 focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 "
+                            id="fullName" type="text" required tabIndex={1} autoComplete="fullName" name="fullName" placeholder="Fullname"/>
+                        <InputError message={errors.fullName} className="mt-2" />
                     </div>
 
                     <div className="grid gap-2 px-10">
-                        <Input className="border-0 border-b border-b-[#1C398E] focus:rounded-lg text-[#1C398E] focus:border-b-blue-400 transition-all duration-200 focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-                            id="email" type="email" required autoFocus tabIndex={2} autoComplete="email" name="email" placeholder="Email"/>
-                        <InputError message={errors.deskripsi} className="mt-2" />
+                        <Input className="border-0 border-b border-b-[#1C398E] dark:border-b-[#F1F5F9] focus:rounded-lg text-[#1C398E] dark:text-[#F1F5F9] focus:border-b-blue-400 dark:focus:border-b-[#F1F5F9] transition-all duration-200 focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+                            id="email" type="email" required tabIndex={2} autoComplete="email" name="email" placeholder="Email"/>
+                        <InputError message={errors.email} className="mt-2" />
                     </div>
 
                     <div className="grid gap-2 px-10">
-                        <textarea className="border-0 border-b border-b-[#1C398E] focus:rounded-lg text-[#1C398E] focus:border-b-blue-400 transition-all duration-200 focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-                            id="deskripsi"  required autoFocus tabIndex={2} autoComplete="deskripsi" name="deskripsi" placeholder="deskripsi"/>
+                        <textarea className="border-0 border-b border-b-[#1C398E] dark:placeholder:text-[#F1F5F9] dark:border-b-[#F1F5F9] focus:rounded-lg text-[#1C398E] dark:text-[#F1F5F9] focus:border-b-blue-400 dark:focus:border-b-[#F1F5F9] transition-all duration-200 focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+                            id="deskripsi"  required tabIndex={3} autoComplete="deskripsi" name="deskripsi" placeholder="   Deskripsi"/>
                         <InputError message={errors.deskripsi} className="mt-2" />
                     </div>
 
-                    <Button type="submit" className="mt-2 w-full bg-[#1C398E] text-white hover:bg-[#294db7] border-none rounded-xl cursor-pointer" tabIndex={5}
+                    <Button type="submit" className="mt-2 w-full bg-[#1C398E] dark:text-[#1C398E] dark:bg-[#CFE6FF] dark:hover:bg-blue-300 text-white hover:bg-[#294db7] border-none rounded-xl cursor-pointer" tabIndex={5}
                         data-test="feedback-user-button"
                     >
                         {processing && <Spinner />}

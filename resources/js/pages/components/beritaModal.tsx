@@ -16,7 +16,7 @@ import { swalSuccess } from "./Alert";
 
 
 
-export default function LaporModal({ open, onClose }: any) {
+export default function BeritaModal({ open, onClose }: any) {
     const [file, setFile] = useState<File | null>(null);
     return (
             <Dialog open={open} onOpenChange={onClose}>
@@ -25,7 +25,7 @@ export default function LaporModal({ open, onClose }: any) {
                         <DialogTitle className="text-[#1C398E] dark:text-[#F1F5F9]">Form Laporan Bencana</DialogTitle>
                     </DialogHeader>
 
-                    <Form method="post" action="/lapor"
+                    <Form method="post" action="/berita"
                         onSuccess={() => {
                             swalSuccess("laporan berhasil dikirim !");
                             onClose(false);
@@ -36,19 +36,11 @@ export default function LaporModal({ open, onClose }: any) {
                      >
                         {({ processing, errors }) => (
                             <div className="space-y-4 px-10">
-                                <Input name="nama" placeholder="Nama"
+                                <Input name="judul" placeholder="Judul"
                                     className="border-0 border-b border-b-[#1C398E] dark:border-b-[#F1F5F9] focus:rounded-lg text-[#1C398E] focus:border-b-blue-400 dark:text-[#F1F5F9] transition-all duration-200 focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                                 />
                                 <InputError
-                                    message={errors.nama}
-                                    className="mt-2"
-                                />
-
-                                <Input name="no_telp" placeholder="No Telp"
-                                    className="border-0 border-b border-b-[#1C398E] dark:border-b-[#F1F5F9] focus:rounded-lg text-[#1C398E] focus:border-b-blue-400 dark:text-[#F1F5F9] transition-all duration-200 focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-                                />
-                                <InputError
-                                    message={errors.no_telp}
+                                    message={errors.judul}
                                     className="mt-2"
                                 />
 

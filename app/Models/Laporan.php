@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\Berita;
+
 
 class Laporan extends Model
 {
@@ -33,6 +35,12 @@ class Laporan extends Model
     {
         return $this->belongsTo(User::class, 'petugas_id');
     }
+
+    public function berita()
+    {
+        return $this->hasOne(Berita::class);
+    }
+
 
 
 }

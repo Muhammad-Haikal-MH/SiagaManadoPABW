@@ -6,7 +6,7 @@ export default function MitigasiCard({ item }: { item: MitigasiItem }) {
 
   return (
     <div
-      className={`rounded-2xl p-6 text-[#1C398E] shadow-lg bg-[#CFE6FF]`}
+      className={`rounded-2xl p-6 text-[#1C398E] dark:bg-[#1E293B] dark:text-[#F1F5F9] shadow-lg bg-[#CFE6FF]`}
     >
       <div className="flex gap-4">
         <div className="bg-white/20 p-3 rounded-xl">
@@ -26,7 +26,7 @@ export default function MitigasiCard({ item }: { item: MitigasiItem }) {
       </ul>
 
       {item.tips && (
-        <div className="mt-4 flex gap-2 bg-blue-300 p-3 rounded-xl text-sm">
+        <div className="mt-4 flex gap-2 bg-blue-300 dark:bg-[#94A3B8] p-3 rounded-xl text-sm">
           <Info size={18} />
           {item.tips}
         </div>

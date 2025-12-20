@@ -83,22 +83,22 @@ export default function WeatherCard() {
   if (!weather) return null;
 
   return (
-    <div className="bg-[#CFE6FF] px-6 py-5 rounded-2xl shadow-md justify-between items-center gap-6">
-        <div className="text-[#1C398E] font-semibold text-md flex gap-2 items-center justify-items-start">
+    <div className="bg-[#CFE6FF] dark:bg-[#1E293B] px-6 py-5 rounded-2xl shadow-md justify-between items-center gap-6">
+        <div className="text-[#1C398E] dark:text-[#F1F5F9] font-semibold text-md flex gap-2 items-center justify-items-start">
             <IoLocationOutline size={20} />
           <span>Manado, Indonesia</span>
         </div>
 
-        <div className="flex flex-row justify-center items-center gap-6 text-center text-[#1C398E]">
+        <div className="flex flex-row justify-center items-center gap-6 text-center text-[#1C398E] dark:text-[#F1F5F9]">
           <p className="md:text-6xl text-3xl font-bold">{weather.temp}°C</p>
           <WeatherIcon />
         </div>
         <div className="text-md font-medium text-[#1C398E] text-center">
-            <p className="capitalize text-[#1C398E] my-3">
+            <p className="capitalize text-[#1C398E] dark:text-[#F1F5F9] my-3">
                 {weather.description}
             </p>
         </div>
-        <div className="flex md:flex-row flex-col gap-4 items-center justify-evenly text-[#1C398E]">
+        <div className="flex md:flex-row flex-col gap-4 items-center justify-evenly text-[#1C398E] dark:text-[#F1F5F9]">
             <div className=" justify-items-center">
                 <WiHumidity size={35} />
                 <p> Kelembapan: {weather.humidity}%</p>

@@ -71,7 +71,7 @@ export default function Profile({
 
                                             <Input
                                                 id="name"
-                                                className="border-0 border-b border-b-[#1C398E] focus:rounded-lg text-[#1C398E] focus:border-b-blue-400 transition-all duration-200 focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+                                                className="border-0 border-b border-b-[#1C398E] dark:border-b-[#F1F5F9] focus:rounded-lg text-[#1C398E] dark:text-[#F1F5F9] focus:border-b-blue-400 transition-all duration-200 focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                                                 defaultValue={auth.user.name}
                                                 name="name"
                                                 required
@@ -91,7 +91,7 @@ export default function Profile({
                                             <Input
                                                 id="email"
                                                 type="email"
-                                                className="border-0 border-b border-b-[#1C398E] focus:rounded-lg text-[#1C398E] focus:border-b-blue-400 transition-all duration-200 focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+                                                className="border-0 border-b border-b-[#1C398E] dark:border-b-[#F1F5F9] focus:rounded-lg text-[#1C398E] dark:text-[#F1F5F9] focus:border-b-blue-400 transition-all duration-200 focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                                                 defaultValue={auth.user.email}
                                                 name="email"
                                                 required
@@ -136,7 +136,7 @@ export default function Profile({
                                             <Button
                                                 disabled={processing}
                                                 data-test="update-profile-button"
-                                                className='bg-blue-300 rounded-xl cursor-pointer border-none hover:bg-blue-400 text-white'
+                                                className='bg-blue-300 rounded-xl dark:bg-[#3B82F6] dark:text-[#F1F5F9] cursor-pointer border-none hover:bg-blue-400 text-white'
                                             >
                                                 Save
                                             </Button>
