@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class BeritaController extends Controller
 {
-    
+
     public function store(Request $request)
 {
     $validated = $request->validate([
@@ -33,15 +33,17 @@ class BeritaController extends Controller
 
 
 
-    public function updateStatus(Berita $berita)
+    public function updateStatus(Request $request, Berita $berita)
     {
-        $berita->update([
-            'status' => $berita->status === 'draft'
-                ? 'published'
-                : 'draft',
+        $request->validate([
+            'status' => 'required|in:draft,published',
         ]);
 
-        return back();
+        $berita->update([
+            'status' => $request->status,
+        ]);
+
+        return back()->with('success', 'Status berita diperbarui');
     }
 
     public function destroy(Berita $berita)

@@ -62,9 +62,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 
     Route::get('/admin/berita', [BeritaController::class, 'index']);
-    Route::post('/berita', [BeritaController::class, 'store']);
-    Route::patch('/berita/{berita}/status', [BeritaController::class, 'updateStatus']);
-    Route::delete('/berita/{berita}', [BeritaController::class, 'destroy']);
+    Route::post('/admin/berita', [BeritaController::class, 'store']);
+    Route::patch('/admin/berita/{berita}/status', [BeritaController::class, 'updateStatus']);
+    Route::delete('/admin/berita/{berita}', [BeritaController::class, 'destroy']);
 
 });
 

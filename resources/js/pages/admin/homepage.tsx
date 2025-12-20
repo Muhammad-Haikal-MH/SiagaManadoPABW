@@ -214,7 +214,7 @@ const handleDetail = (laporan: any) => {
                   </thead>
                   <tbody>
                     {laporans.map((row) => (
-                      <tr key={row.id} className="border-b border-[#CFE6FF] hover:bg-gray-50 dark:hover:bg-white/10 dark:border-[#1C398E]">
+                      <tr key={row.id} className="border-b border-[#CFE6FF] hover:bg-gray-50 dark:hover:bg-[#1C398E]/30 dark:border-[#1C398E]">
                         <td className="py-3 px-4 text-sm text-[#1C398E] dark:text-[#F1F5F9]">{row.nama}</td>
                         <td className="py-3 px-4 text-sm text-[#1C398E] dark:text-[#F1F5F9]">{row.jenis}</td>
                         <td className="py-3 px-4 text-sm text-[#1C398E] dark:text-[#F1F5F9]">{row.lokasi}</td>

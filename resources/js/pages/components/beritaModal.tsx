@@ -25,7 +25,7 @@ export default function BeritaModal({ open, onClose }: any) {
                         <DialogTitle className="text-[#1C398E] dark:text-[#F1F5F9]">Form Laporan Bencana</DialogTitle>
                     </DialogHeader>
 
-                    <Form method="post" action="/berita"
+                    <Form method="post" action="/admin/berita"
                         onSuccess={() => {
                             swalSuccess("laporan berhasil dikirim !");
                             onClose(false);
