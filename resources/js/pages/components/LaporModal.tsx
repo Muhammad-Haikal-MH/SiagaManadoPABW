@@ -20,7 +20,7 @@ export default function LaporModal({ open, onClose }: any) {
     const [file, setFile] = useState<File | null>(null);
     return (
             <Dialog open={open} onOpenChange={onClose}>
-                <DialogContent className="max-w-xl md:w-[420px] md:h-[650px] p-5 rounded-xl bg-[#CFE6FF] dark:bg-[#1E293B] border-none">
+                <DialogContent className="max-w-xl md:w-[420px] mx-auto w-auto justify-center md:h-[650px] p-5 rounded-xl bg-[#CFE6FF] dark:bg-[#1E293B] border-none">
                     <DialogHeader>
                         <DialogTitle className="text-[#1C398E] dark:text-[#F1F5F9]">Form Laporan Bencana</DialogTitle>
                     </DialogHeader>

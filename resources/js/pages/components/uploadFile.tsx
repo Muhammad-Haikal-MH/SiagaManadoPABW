@@ -6,7 +6,6 @@ interface FileUploadProps {
 }
 
 export default function FileUpload({ onChange }: FileUploadProps) {
-  const inputRef = useRef<HTMLInputElement | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [type, setType] = useState<"image" | "video" | null>(null);
 
@@ -27,46 +26,46 @@ export default function FileUpload({ onChange }: FileUploadProps) {
   };
 
   return (
-    <label
-      className="relative block cursor-pointer rounded-xl border-2 border-dashed border-[#1C398E] dark:border-[#F1F5F9] p-5 text-center hover:bg-blue-300 dark:hover:bg-[#3B82F6] transition"
-      onClick={() => inputRef.current?.click()}
-    >
-      {!preview && (
-        <div className="flex flex-col items-center gap-3 text-[#1C398E] dark:text-[#F1F5F9]">
-          <FaCloudUploadAlt size={32} />
-          <p className="text-sm">
-            Upload file disini
-          </p>
-          <span className="rounded-full bg-[#1C398E] px-4 py-2 text-sm text-white dark:bg-[#1C398E] dark:text-[#F1F5F9]">
-            Browse File
-          </span>
-        </div>
-      )}
+    <>
+      <label
+        htmlFor="file-upload"
+        className="relative block cursor-pointer rounded-xl border-2 border-dashed border-[#1C398E] dark:border-[#F1F5F9] p-5 text-center hover:bg-blue-300 dark:hover:bg-[#3B82F6] transition"
+      >
+        {!preview && (
+          <div className="flex flex-col items-center gap-3 text-[#1C398E] dark:text-[#F1F5F9]">
+            <FaCloudUploadAlt size={32} />
+            <p className="text-sm">Upload file disini</p>
+            <span className="rounded-full bg-[#1C398E] px-4 py-2 text-sm text-white">
+              Browse File
+            </span>
+          </div>
+        )}
 
-      {preview && type === "image" && (
-        <img
-          src={preview}
-          alt="Preview"
-          className="rounded-xl w-full max-h-32 object-cover"
-        />
-      )}
+        {preview && type === "image" && (
+          <img
+            src={preview}
+            alt="Preview"
+            className="rounded-xl w-full max-h-32 object-cover"
+          />
+        )}
 
-      {preview && type === "video" && (
-        <video
-          src={preview}
-          controls
-          className="rounded-xl w-full max-h-32"
-        />
-      )}
+        {preview && type === "video" && (
+          <video
+            src={preview}
+            controls
+            className="rounded-xl w-full max-h-32"
+          />
+        )}
+      </label>
 
       <input
-        ref={inputRef}
+        id="file-upload"
         type="file"
         name="foto"
         accept=".png,.jpg,.jpeg,.mp4"
         className="hidden"
         onChange={handleFileChange}
       />
-    </label>
+    </>
   );
 }

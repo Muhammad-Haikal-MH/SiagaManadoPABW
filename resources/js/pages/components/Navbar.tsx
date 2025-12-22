@@ -170,7 +170,7 @@ const { appearance, updateAppearance } = useAppearance();
           {/* BURGER BUTTON */}
           <button
             onClick={() => setOpen(true)}
-            className="md:hidden text-2xl text-[#1C398E]"
+            className="md:hidden text-2xl text-[#1C398E] dark:text-[#F1F5F9] cursor-pointer"
           >
             <IoMenu />
           </button>
@@ -187,15 +187,35 @@ const { appearance, updateAppearance } = useAppearance();
 
       {/* SIDEBAR MOBILE */}
       <aside
-        className={`fixed top-0 right-0 h-full w-64 bg-[#CFE6FF] z-50 p-6 transform transition-transform duration-300
+        className={`fixed top-0 right-0 h-full w-64 bg-white/70 dark:bg-gray-900/50 backdrop-blur-md z-50 p-6 transform transition-transform duration-300
         ${open ? "translate-x-0" : "translate-x-full"}
       `}
       >
         <div className="flex justify-between items-center mb-6">
           <span className="font-semibold text-lg">Menu</span>
-          <button onClick={() => setOpen(false)} className="text-2xl">
-            <IoClose />
-          </button>
+          <div className="flex gap-2 items-center">
+            <button
+                onClick={() =>
+                    updateAppearance(
+                    appearance === 'dark' ? 'light' : 'dark'
+                    )
+                }
+                className="p-2 rounded-xl transition
+                    text-[#1C398E]
+                    hover:bg-blue-100
+                    dark:text-[#F1F5F9]
+                    dark:hover:bg-gray-700 cursor-pointer"
+                >
+                {appearance === 'dark' ? (
+                    <IoSunnyOutline size={22} />
+                ) : (
+                    <IoMoonOutline size={22} />
+                )}
+            </button>
+            <button onClick={() => setOpen(false)} className="text-2xl">
+                <IoClose />
+            </button>
+          </div>
         </div>
 
         <div className="flex flex-col gap-4">
@@ -212,7 +232,7 @@ const { appearance, updateAppearance } = useAppearance();
 
           {!user ? (
             <>
-              <Link href={login()} className="text-[#1C398E]">
+              <Link href={login()} className="bg-[#1C398E] text-white text-center py-2 rounded-xl">
                 Login
               </Link>
               <Link
@@ -224,12 +244,12 @@ const { appearance, updateAppearance } = useAppearance();
             </>
           ) : (
             <>
-              <Link href="#" className="flex justify-between">
+              <Link href="/settings/profile" className="flex justify-between ">
                 Profile <IoPersonOutline />
               </Link>
               <button
                 onClick={handleLogout}
-                className="text-red-600 flex justify-between"
+                className="flex justify-between bg-red-500 hover:bg-red-600 px-4 py-2 cursor-pointer rounded-xl text-white items-center"
               >
                 Logout <IoLogOutOutline />
               </button>

@@ -15,18 +15,18 @@ const DashboardFeedback = (props: Feedback) => {
     const { feedbacks } = props;
 
   return (
-    <div className="flex h-screen">
+    <div className="relative h-screen">
       {/* Sidebar */}
       <AdminSidebar menus={adminMenus} onToggle={setSidebarOpen} />
 
       {/* Main Content */}
       <main
         className={cn(
-            "min-h-screen overflow-auto transition-all duration-300 w-full",
-            sidebarOpen
-            ? "md:ml-0 "
-            : "md:ml-20"
-        )}
+                "transition-all duration-300 min-h-screen",
+                sidebarOpen
+                ? "ml-0 md:ml-64"
+                : "ml-20"
+            )}
       >
         <div className="p-8">
             <h1 className="text-2xl font-bold mb-4 text-[#1C398E] dark:text-[#F1F5F9]">Feedback Dashboard</h1>

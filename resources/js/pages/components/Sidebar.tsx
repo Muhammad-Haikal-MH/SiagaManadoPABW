@@ -46,9 +46,11 @@ export default function AdminSidebar({ menus, onToggle }: Props) {
   return (
     <aside
         className={cn(
-        "h-screen border-r border-[#CFE6FF] bg-white dark:bg-[#0F172A] dark:border-none transition-all duration-300 flex flex-col",
-        "md:fixed md:left-0 md:top-0 md:z-40",
-        sidebarOpen ? "w-64 fixed lg:w-64" : "w-20"
+    "fixed top-0 left-0 z-40 h-screen",
+    "bg-white dark:bg-[#0F172A]",
+    "border-r border-[#CFE6FF] dark:border-none",
+    "transition-all duration-300 flex flex-col",
+    sidebarOpen ? "w-64" : "w-20"
   )}
     >
       {/* HEADER */}

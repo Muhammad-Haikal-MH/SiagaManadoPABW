@@ -21,6 +21,10 @@ class ProfileController extends Controller
         return Inertia::render('settings/profile', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => $request->session()->get('status'),
+            'laporans' => $request->user()
+            ->laporans()
+            ->latest()
+            ->paginate(5),
         ]);
     }
 
@@ -60,4 +64,6 @@ class ProfileController extends Controller
 
         return redirect('/');
     }
+
+
 }

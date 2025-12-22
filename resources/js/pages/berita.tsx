@@ -71,7 +71,7 @@ const Berita = (props: Props) => {
                     {berita.deskripsi}
                   </p>
 
-                  <button className="w-full py-3 px-4 cursor-pointer bg-slate-50 dark:bg-slate-700/50 text-slate-700 dark:text-slate-200 font-semibold rounded-xl hover:bg-blue-600 hover:text-white transition-colors duration-200"
+                  <button className="w-full py-3 px-4 cursor-pointer bg-blue-200 dark:bg-white/10 dark:hover:bg-white/30 text-slate-700 dark:text-slate-200 font-semibold rounded-xl hover:bg-blue-500 hover:text-white transition-colors duration-200"
                     onClick={() => DetailBerita(berita)}
                     >
                     Lihat Detail

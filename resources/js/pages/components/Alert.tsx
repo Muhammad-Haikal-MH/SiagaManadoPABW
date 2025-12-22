@@ -236,7 +236,7 @@ export const swalDetailBeritaUser = (berita: any) => {
     html: `
       <div class="text-left font-sans">
         ${berita.foto ? `
-          <div class="w-full h-[300px] relative">
+          <div class="w-full h-[300px] relative ">
             <img src="/storage/${berita.foto}" class="w-full h-full object-cover" />
             <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/60 to-transparent"></div>
             <span class="absolute bottom-4 left-6 bg-blue-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">${berita.jenis}</span>

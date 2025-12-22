@@ -126,166 +126,169 @@ const handleDetail = (laporan: any) => {
 
 
   return (
-    <div className="flex h-screen ">
+    <div className="h-screen relative">
       {/* Sidebar */}
-      <AdminSidebar menus={adminMenus} onToggle={setSidebarOpen}  />
 
-      {/* Main Content */}
-      <main className={cn(
-          " transition-all duration-300 w-full",
-          sidebarOpen
-          ? "md:ml-0 "
-          : "md:ml-20"
-      )}>
-        <div className="p-8">
-          {/* Stats Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            {statsData.map((stat, index) => (
-              <Card key={index} className='border-none shadow-xl shadow-[#CFE6FF] dark:shadow-black/20'>
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="font-medium text-[#1C398E] dark:text-[#F1F5F9] mb-1">{stat.title}</p>
-                      <h3 className="text-2xl font-bold text-[#1C398E] dark:text-[#F1F5F9]">{stat.value}</h3>
+        <AdminSidebar menus={adminMenus} onToggle={setSidebarOpen} />
+
+        {/* Main Content */}
+        <main className=
+            {cn(
+                "transition-all duration-300 min-h-screen",
+                sidebarOpen
+                ? "ml-0 md:ml-64"
+                : "ml-20"
+            )}
+        >
+            <div className="p-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                {statsData.map((stat, index) => (
+                <Card key={index} className='border-none shadow-xl shadow-[#CFE6FF] dark:shadow-black/20'>
+                    <CardContent className="p-6">
+                    <div className="flex items-center justify-between">
+                        <div>
+                        <p className="font-medium text-[#1C398E] dark:text-[#F1F5F9] mb-1">{stat.title}</p>
+                        <h3 className="text-2xl font-bold text-[#1C398E] dark:text-[#F1F5F9]">{stat.value}</h3>
+                        </div>
+                        <div className={`p-3 rounded-lg`}>
+                        <stat.icon size={24} className="text-[#1C398E] dark:text-[#F1F5F9]" />
+                        </div>
                     </div>
-                    <div className={`p-3 rounded-lg`}>
-                      <stat.icon size={24} className="text-[#1C398E] dark:text-[#F1F5F9]" />
-                    </div>
-                  </div>
+                    </CardContent>
+                </Card>
+                ))}
+            </div>
+
+            {/* Charts */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <Card className='border-none shadow-xl shadow-[#CFE6FF] dark:shadow-black/20'>
+                <CardHeader>
+                    <CardTitle className='text-[#1C398E] dark:text-[#F1F5F9]'>Statistik Total Laporan</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <ResponsiveContainer width="90%" height={300}>
+                    <BarChart data={chartTotalLaporan} >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis allowDecimals={false} />
+                        <Tooltip labelClassName='text-[#1C398E]' />
+                        <Bar dataKey="value" fill="#3b82f6" radius={[8, 8, 0, 0]} />
+                    </BarChart>
+                    </ResponsiveContainer>
                 </CardContent>
-              </Card>
-            ))}
-          </div>
+                </Card>
 
-          {/* Charts */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <Card className='border-none shadow-xl shadow-[#CFE6FF] dark:shadow-black/20'>
+                <CardHeader>
+                    <CardTitle className='text-[#1C398E] dark:text-[#F1F5F9]'>Statistik laporan Selesai</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <ResponsiveContainer width="100%" height={300}>
+                    <LineChart data={chartLaporanSelesai}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis allowDecimals={false} />
+                        <Tooltip labelClassName='text-[#1C398E]' />
+                        <Line type="monotone" dataKey="value" stroke="#8b5cf6" strokeWidth={2} />
+                    </LineChart>
+                    </ResponsiveContainer>
+                </CardContent>
+                </Card>
+            </div>
+
+            {/* Table */}
             <Card className='border-none shadow-xl shadow-[#CFE6FF] dark:shadow-black/20'>
-              <CardHeader>
-                <CardTitle className='text-[#1C398E] dark:text-[#F1F5F9]'>Statistik Total Laporan</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ResponsiveContainer width="100%" height={300}>
-                  <BarChart data={chartTotalLaporan} >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis allowDecimals={false} />
-                    <Tooltip labelClassName='text-[#1C398E]' />
-                    <Bar dataKey="value" fill="#3b82f6" radius={[8, 8, 0, 0]} />
-                  </BarChart>
-                </ResponsiveContainer>
-              </CardContent>
-            </Card>
-
-            <Card className='border-none shadow-xl shadow-[#CFE6FF] dark:shadow-black/20'>
-              <CardHeader>
-                <CardTitle className='text-[#1C398E] dark:text-[#F1F5F9]'>Statistik laporan Selesai</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ResponsiveContainer width="100%" height={300}>
-                  <LineChart data={chartLaporanSelesai}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis allowDecimals={false} />
-                    <Tooltip labelClassName='text-[#1C398E]' />
-                    <Line type="monotone" dataKey="value" stroke="#8b5cf6" strokeWidth={2} />
-                  </LineChart>
-                </ResponsiveContainer>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Table */}
-          <Card className='border-none shadow-xl shadow-[#CFE6FF] dark:shadow-black/20'>
-            <CardHeader>
-              <CardTitle className='text-[#1C398E] dark:text-[#F1F5F9]'>Data Pelaporan</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b border-blue-300 dark:border-[#1C398E]">
-                      <th className="text-left py-3 px-4 text-sm font-semibold text-[#1C398E] dark:text-[#F1F5F9]">Name Pelapor</th>
-                      <th className="text-left py-3 px-4 text-sm font-semibold text-[#1C398E] dark:text-[#F1F5F9]">Jenis Bencana</th>
-                      <th className="text-left py-3 px-4 text-sm font-semibold text-[#1C398E] dark:text-[#F1F5F9]">Lokasi</th>
-                      <th className="text-left py-3 px-4 text-sm font-semibold text-[#1C398E] dark:text-[#F1F5F9]">Status</th>
-                      <th className="text-left py-3 px-4 text-sm font-semibold text-[#1C398E] dark:text-[#F1F5F9]">Date</th>
-                      <th className="text-left py-3 px-4 text-sm font-semibold text-[#1C398E] dark:text-[#F1F5F9]">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {laporans.map((row) => (
-                      <tr key={row.id} className="border-b border-[#CFE6FF] hover:bg-gray-50 dark:hover:bg-[#1C398E]/30 dark:border-[#1C398E]">
-                        <td className="py-3 px-4 text-sm text-[#1C398E] dark:text-[#F1F5F9]">{row.nama}</td>
-                        <td className="py-3 px-4 text-sm text-[#1C398E] dark:text-[#F1F5F9]">{row.jenis}</td>
-                        <td className="py-3 px-4 text-sm text-[#1C398E] dark:text-[#F1F5F9]">{row.lokasi}</td>
-                        <td className="py-3 px-4">
-                          <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                            row.status === 'menunggu'
-                            ? 'bg-yellow-100 text-yellow-800'
-                            : row.status === 'diverifikasi'
-                            ? 'bg-blue-100 text-blue-800'
-                            : row.status === 'diproses'
-                            ? 'bg-purple-100 text-purple-800'
-                            : row.status === 'selesai'
-                            ? 'bg-green-100 text-green-800'
-                            : 'bg-red-100 text-red-800'
-                        }`}>
-                            {row.status}
-                          </span>
-                        </td>
-                        <td className="py-3 px-4 text-sm text-[#1C398E] dark:text-[#F1F5F9]">{row.tanggal}</td>
-                        <td className="py-3 px-4">
-                          <div className="flex items-center gap-2">
-                            <Button
-                              size="sm"
-                              variant="ghost"
-                              onClick={() => handleVerify(row.id)}
-                              className=" text-[#1C398E] bg-[#CFE6FF] hover:bg-blue-300 dark:text-[#F1F5F9] dark:bg-[#3B82F6] dark:hover:bg-[#1C398E] cursor-pointer rounded-xl"
-                            >
-                              <CheckCircle size={16} />
-                              <span>Verifikasi</span>
-                            </Button>
-                            <Button
-                              size="sm"
-                              variant="ghost"
-                              onClick={() => handleReject(row.id)}
-                              className="text-[#1C398E] bg-red-300 hover:bg-red-400 dark:text-[#F1F5F9] dark:bg-red-500 dark:hover:bg-red-900 cursor-pointer rounded-xl"
-                            >
-                              <XCircle size={16} />
-                              <span>Tolak</span>
-                            </Button>
-                            <DropdownMenu modal={false}>
-                              <DropdownMenuTrigger asChild>
-                                <Button size="sm" variant="ghost" className="hover:bg-blue-100 rounded-2xl hover:text-[#1C398E] dark:hover:bg-white/10 dark:hover:text-[#F1F5F9]">
-                                  <MoreVertical size={16} />
-                                </Button>
-                              </DropdownMenuTrigger>
-                              <DropdownMenuContent align="start" className='w-40 rounded-xl z-50 bg-white/80 border-none'>
-                                <DropdownMenuItem onClick={() => handleDetail(row)} className='cursor-pointer text-[#1C398E] focus:bg-blue-300 focus:text-white focus:rounded-xl'>
-                                  <Eye size={16} className="mr-2" />
-                                  Detail
-                                </DropdownMenuItem>
-                                <DropdownMenuItem
-                                  onClick={() => handleDelete(row.id)}
-                                  className="text-red-400 focus:bg-red-400 focus:text-white focus:rounded-xl cursor-pointer"
+                <CardHeader>
+                <CardTitle className='text-[#1C398E] dark:text-[#F1F5F9]'>Data Pelaporan</CardTitle>
+                </CardHeader>
+                <CardContent>
+                <div className="overflow-x-auto">
+                    <table className="w-full">
+                    <thead>
+                        <tr className="border-b border-blue-300 dark:border-[#1C398E]">
+                        <th className="text-left py-3 px-4 text-sm font-semibold text-[#1C398E] dark:text-[#F1F5F9]">Name Pelapor</th>
+                        <th className="text-left py-3 px-4 text-sm font-semibold text-[#1C398E] dark:text-[#F1F5F9]">Jenis Bencana</th>
+                        <th className="text-left py-3 px-4 text-sm font-semibold text-[#1C398E] dark:text-[#F1F5F9]">Lokasi</th>
+                        <th className="text-left py-3 px-4 text-sm font-semibold text-[#1C398E] dark:text-[#F1F5F9]">Status</th>
+                        <th className="text-left py-3 px-4 text-sm font-semibold text-[#1C398E] dark:text-[#F1F5F9]">Date</th>
+                        <th className="text-left py-3 px-4 text-sm font-semibold text-[#1C398E] dark:text-[#F1F5F9]">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {laporans.map((row) => (
+                        <tr key={row.id} className="border-b border-[#CFE6FF] hover:bg-gray-50 dark:hover:bg-[#1C398E]/30 dark:border-[#1C398E]">
+                            <td className="py-3 px-4 text-sm text-[#1C398E] dark:text-[#F1F5F9]">{row.nama}</td>
+                            <td className="py-3 px-4 text-sm text-[#1C398E] dark:text-[#F1F5F9]">{row.jenis}</td>
+                            <td className="py-3 px-4 text-sm text-[#1C398E] dark:text-[#F1F5F9]">{row.lokasi}</td>
+                            <td className="py-3 px-4">
+                            <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                                row.status === 'menunggu'
+                                ? 'bg-yellow-100 text-yellow-800'
+                                : row.status === 'diverifikasi'
+                                ? 'bg-blue-100 text-blue-800'
+                                : row.status === 'diproses'
+                                ? 'bg-purple-100 text-purple-800'
+                                : row.status === 'selesai'
+                                ? 'bg-green-100 text-green-800'
+                                : 'bg-red-100 text-red-800'
+                            }`}>
+                                {row.status}
+                            </span>
+                            </td>
+                            <td className="py-3 px-4 text-sm text-[#1C398E] dark:text-[#F1F5F9]">{row.tanggal}</td>
+                            <td className="py-3 px-4">
+                            <div className="flex items-center gap-2">
+                                <Button
+                                size="sm"
+                                variant="ghost"
+                                onClick={() => handleVerify(row.id)}
+                                className=" text-[#1C398E] bg-[#CFE6FF] hover:bg-blue-300 dark:text-[#F1F5F9] dark:bg-[#3B82F6] dark:hover:bg-[#1C398E] cursor-pointer rounded-xl"
                                 >
-                                  <Trash2 size={16} className="mr-2" />
-                                  Delete
-                                </DropdownMenuItem>
-                              </DropdownMenuContent>
-                            </DropdownMenu>
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </main>
+                                <CheckCircle size={16} />
+                                <span>Verifikasi</span>
+                                </Button>
+                                <Button
+                                size="sm"
+                                variant="ghost"
+                                onClick={() => handleReject(row.id)}
+                                className="text-[#1C398E] bg-red-300 hover:bg-red-400 dark:text-[#F1F5F9] dark:bg-red-500 dark:hover:bg-red-900 cursor-pointer rounded-xl"
+                                >
+                                <XCircle size={16} />
+                                <span>Tolak</span>
+                                </Button>
+                                <DropdownMenu modal={false}>
+                                <DropdownMenuTrigger asChild>
+                                    <Button size="sm" variant="ghost" className="hover:bg-blue-100 rounded-2xl hover:text-[#1C398E] dark:hover:bg-white/10 dark:hover:text-[#F1F5F9]">
+                                    <MoreVertical size={16} />
+                                    </Button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent align="start" className='w-40 rounded-xl z-50 bg-white/80 border-none'>
+                                    <DropdownMenuItem onClick={() => handleDetail(row)} className='cursor-pointer text-[#1C398E] focus:bg-blue-300 focus:text-white focus:rounded-xl'>
+                                    <Eye size={16} className="mr-2" />
+                                    Detail
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem
+                                    onClick={() => handleDelete(row.id)}
+                                    className="text-red-400 focus:bg-red-400 focus:text-white focus:rounded-xl cursor-pointer"
+                                    >
+                                    <Trash2 size={16} className="mr-2" />
+                                    Delete
+                                    </DropdownMenuItem>
+                                </DropdownMenuContent>
+                                </DropdownMenu>
+                            </div>
+                            </td>
+                        </tr>
+                        ))}
+                    </tbody>
+                    </table>
+                </div>
+                </CardContent>
+            </Card>
+            </div>
+        </main>
     </div>
+
   );
 };
 

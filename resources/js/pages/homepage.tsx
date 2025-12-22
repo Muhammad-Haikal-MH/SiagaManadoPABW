@@ -50,7 +50,7 @@ export default function Homepage({ auth }: any) {
                         {user ? (
                             <>
                                 <Button
-                                    className="bg-[#1C398E] dark:bg-[#CFE6FF] dark:hover:bg-blue-300 dark:text-[#1C398E] hover:bg-blue-300 text-white md:text-lg font-bold md:py-7 md:px-8 py-2 px-4 rounded-full cursor-pointer"
+                                    className="bg-[#1C398E] dark:bg-[#CFE6FF] dark:hover:bg-blue-300 dark:text-[#1C398E] hover:bg-blue-300 text-white md:text-lg font-bold md:py-7 md:px-8 py-5 px-4 rounded-full cursor-pointer"
                                     onClick={() => setOpen(true)}
                                 >
                                     Laporkan
@@ -116,7 +116,7 @@ export default function Homepage({ auth }: any) {
                     </h1>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mx-4 xl:mx-auto max-w-[1224px] gap-10">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-4 xl:mx-auto max-w-[1224px] gap-10">
                     {kontakDarurat.map((item) => (
                         <div
                             key={item.title}

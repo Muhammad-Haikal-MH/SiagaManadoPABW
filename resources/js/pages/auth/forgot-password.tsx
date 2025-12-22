@@ -27,12 +27,12 @@ export default function ForgotPassword({ status }: { status?: string }) {
                     </div>
 
                     {/* CARD */}
-                    <div className="md:w-[420px] w-80 mx-auto p-8 bg-gradient-to-b from-[#E8F3FF] to-[#F7FAFF] shadow-lg rounded-3xl">
-                        <h2 className="text-[#1C398E] text-3xl font-semibold mb-2">
+                    <div className="md:w-[420px] w-80 mx-auto p-8 bg-gradient-to-b from-[#E8F3FF] to-[#F7FAFF] dark:bg-none dark:bg-[#1E293B] shadow-lg rounded-3xl">
+                        <h2 className="text-[#1C398E] dark:text-[#F1F5F9] text-3xl font-semibold mb-2">
                             Forgot Password
                         </h2>
 
-                        <p className="text-sm text-[#6a6c6e] mb-6">
+                        <p className="text-sm text-[#6a6c6e] dark:text-[#94A3B8] mb-6">
                             Enter your email to receive a password reset link
                         </p>
 
@@ -55,9 +55,9 @@ export default function ForgotPassword({ status }: { status?: string }) {
                                                 autoComplete="off"
                                                 placeholder="email@example.com"
                                                 className="
-                                                    border-0 border-b border-b-[#1C398E]
+                                                    border-0 border-b border-b-[#1C398E] dark:border-b-[#94A3B8]
                                                     focus:rounded-lg
-                                                    text-[#1C398E]
+                                                    text-[#1C398E] dark:text-[#F1F5F9]
                                                     focus:border-b-blue-400
                                                     transition-all duration-200
                                                     focus:outline-none
@@ -71,7 +71,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
 
                                         <Button
                                             type="submit"
-                                            className="mt-2 w-full bg-[#1C398E] text-white hover:bg-[#294db7] rounded-xl"
+                                            className="mt-2 w-full bg-[#1C398E] text-white hover:bg-[#294db7] dark:text-[#1C398E] dark:bg-[#CFE6FF] dark:hover:bg-blue-300 rounded-xl"
                                             disabled={processing}
                                             data-test="email-password-reset-link-button"
                                         >
@@ -82,9 +82,9 @@ export default function ForgotPassword({ status }: { status?: string }) {
                                         </Button>
                                     </div>
 
-                                    <div className="text-center text-sm text-[#6a6c6e]">
+                                    <div className="text-center text-sm text-[#6a6c6e] dark:text-[#94A3B8]">
                                         Remember your password?{' '}
-                                        <TextLink href={login()} className="text-[#1C398E]">
+                                        <TextLink href={login()} className="text-[#1C398E] dark:text-[#F1F5F9]">
                                             Log in
                                         </TextLink>
                                     </div>
