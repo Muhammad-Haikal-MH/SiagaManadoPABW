@@ -39,7 +39,7 @@ export const swalDetailLaporan = (laporan: any) => {
     showCloseButton: true,
     showConfirmButton: false,
     customClass: {
-      popup: "rounded-2xl",
+      popup: "rounded-2xl ",
     },
     html: `
       <div class="text-left text-sm text-slate-700 space-y-4">

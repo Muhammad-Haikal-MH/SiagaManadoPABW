@@ -120,13 +120,13 @@ export default function Homepage({ auth }: any) {
                     {kontakDarurat.map((item) => (
                         <div
                             key={item.title}
-                            className="bg-[#CFE6FF] dark:bg-[#1E293B] p-6 w-full h-72 rounded-4xl hover:scale-105 transition duration-300 cursor-pointer"
+                            className="bg-[#CFE6FF] dark:bg-[#1E293B] p-6 w-full h-52 md:h-72 rounded-4xl hover:scale-105 transition duration-300 cursor-pointer"
                         >
                             <div className="flex justify-between items-center">
-                                <h1 className="text-2xl font-semibold text-[#1C398E] dark:text-[#F1F5F9]">
+                                <h1 className="md:text-2xl text-lg font-semibold text-[#1C398E] dark:text-[#F1F5F9]">
                                     {item.title}
                                 </h1>
-                                <IoIosArrowDroprightCircle size={45} className="text-[#1C398E] dark:text-[#F1F5F9]"/>
+                                <IoIosArrowDroprightCircle size={40} className="text-[#1C398E] dark:text-[#F1F5F9]"/>
                             </div>
 
                             <div className="flex justify-end mt-8">

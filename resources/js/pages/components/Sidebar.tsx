@@ -48,7 +48,7 @@ export default function AdminSidebar({ menus, onToggle }: Props) {
         className={cn(
     "fixed top-0 left-0 z-40 h-screen",
     "bg-white dark:bg-[#0F172A]",
-    "border-r border-[#CFE6FF] dark:border-none",
+    "border-r border-[#CFE6FF] dark:border-white/20",
     "transition-all duration-300 flex flex-col",
     sidebarOpen ? "w-64" : "w-20"
   )}
