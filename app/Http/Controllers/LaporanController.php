@@ -26,7 +26,7 @@ class LaporanController extends Controller
             $fotoPath = $request->file('foto')->store('laporan', 'public');
         }
 
-        Laporan::create([
+        $laporan = Laporan::create([
             'nama'      => $request->nama,
             'telp'      => $request->no_telp,
             'lokasi'    => $request->lokasi,
@@ -38,10 +38,16 @@ class LaporanController extends Controller
             //  AMBIL USER LOGIN
             'user_id'   => Auth::id(),
 
-            // masih kosong, nanti diisi BPBD
             'petugas_id'=> null,
             'status'    => 'menunggu',
         ]);
+
+        if ($request->expectsJson() || $request->is('api/*')) {
+            return response()->json([
+                'message' => 'Laporan berhasil dikirim melalui API',
+                'data' => $laporan
+            ], 201);
+        }
 
         return back()->with('success', 'Laporan berhasil dikirim');
     }

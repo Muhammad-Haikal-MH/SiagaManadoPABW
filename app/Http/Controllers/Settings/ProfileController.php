@@ -16,15 +16,26 @@ class ProfileController extends Controller
     /**
      * Show the user's profile settings page.
      */
-    public function edit(Request $request): Response
+    public function edit(Request $request)
     {
+        // 1. Ambil data user dan laporannya
+        $user = $request->user();
+        $laporans = $user->laporans()
+                        ->latest()
+                        ->paginate(5);
+
+        // 2. response json posmen
+        if ($request->expectsJson() || $request->is('api/*')) {
+            return response()->json([
+                'user' => $user,
+                'laporans' => $laporans,
+            ]);
+        }
+
         return Inertia::render('settings/profile', [
-            'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
+            'mustVerifyEmail' => $user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail,
             'status' => $request->session()->get('status'),
-            'laporans' => $request->user()
-            ->laporans()
-            ->latest()
-            ->paginate(5),
+            'laporans' => $laporans,
         ]);
     }
 

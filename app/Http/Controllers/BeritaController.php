@@ -79,11 +79,22 @@ class BeritaController extends Controller
         ]);
     }
 
-    public function indexUser() {
+    public function indexUser(Request $request)
+    {
+        $beritas = Berita::where('status', 'published')
+                    ->latest()
+                    ->get();
+
+        // response json biar enak liat api nya tar
+        if ($request->expectsJson() || $request->is('api/*')) {
+            return response()->json([
+                'success' => true,
+                'data' => $beritas
+            ]);
+        }
+
         return Inertia::render('berita', [
-            'beritas' => Berita::where('status', 'published')
-                ->latest()
-                ->get(),
+            'beritas' => $beritas,
         ]);
     }
 

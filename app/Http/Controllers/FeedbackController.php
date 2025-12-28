@@ -18,12 +18,19 @@ class FeedbackController extends Controller
             'deskripsi' => 'required|string',
         ]);
 
-        Feedback::create([
+        $feedback = Feedback::create([
             'user_id' => auth()->id(),
             'fullName' => $request->fullName,
             'email' => $request->email,
             'deskripsi' => $request->deskripsi,
         ]);
+
+        if ($request->expectsJson() || $request->is('api/*')) {
+            return response()->json([
+                'message' => 'feecback berhasil dikirim melalui API',
+                'data' => $feedback
+            ], 201);
+        }
 
         return back()->with('success', 'Feedback berhasil dikirim');
     }
