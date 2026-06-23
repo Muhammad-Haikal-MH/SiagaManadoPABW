@@ -28,10 +28,12 @@ class BeritaController extends Controller
 
     Berita::create($validated);
 
-    return back()->with('success', 'Berita ditambahkan (draft)');
+    return response()->json([
+        'success' => true,
+        'message' => 'Berita berhasil ditambahkan (draft)',
+        'data' => $validated
+    ], 201);
 }
-
-
 
     public function updateStatus(Request $request, Berita $berita)
     {
@@ -43,14 +45,20 @@ class BeritaController extends Controller
             'status' => $request->status,
         ]);
 
-        return back()->with('success', 'Status berita diperbarui');
+        return response()->json([
+            'success' => true,
+            'message' => 'Status berita diperbarui',
+        ], 200);
     }
 
     public function destroy(Berita $berita)
     {
         $berita->delete();
 
-        return back()->with('success', 'Berita dihapus');
+        return response()->json([
+            'success' => true,
+            'message' => 'Berita berhasil dihapus',
+        ], 200);
     }
 
     public function index()

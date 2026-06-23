@@ -76,7 +76,7 @@ export default function Homepage({ auth }: any) {
                 </div>
             </section>
 
-            {/* MENU CARD */}
+
             <section className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-7 mt-8 mx-4 max-w-[1224px] xl:mx-auto">
                 <Link
                     href="/mitigasi"
@@ -105,7 +105,7 @@ export default function Homepage({ auth }: any) {
                 </Link>
             </section>
 
-            {/* KONTAK DARURAT */}
+            {/* kontak darurat */}
             <section>
                 <div className="container mx-auto p-20">
                     <h1
@@ -145,7 +145,7 @@ export default function Homepage({ auth }: any) {
         <section className="mt-24 container mx-auto max-w-6xl p-6 rounded-lg">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
 
-            {/* LEFT */}
+
             <div>
             <h1 className="text-2xl font-bold text-[#1C398E] mb-4 dark:text-[#F1F5F9]">
                 Lebih Dekat
@@ -189,7 +189,7 @@ export default function Homepage({ auth }: any) {
             </div>
             </div>
 
-            {/* RIGHT */}
+           
             <div className="bg-[#CFE6FF] p-6 rounded-2xl shadow-lg dark:bg-[#1E293B]">
             <h2 className="text-2xl font-bold text-blue-900 mb-4 dark:text-[#F1F5F9]">
                 Kirim Pesan

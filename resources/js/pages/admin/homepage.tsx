@@ -29,7 +29,6 @@ const DashboardAdmin = (pros: propss) => {
     const { stats, laporans, chart  } = pros;
     const [sidebarOpen, setSidebarOpen] = useState(true);
 
-  // Data untuk cards
   const statsData = [
   { title: 'Total Users', value: stats.totalUsers, icon: Users },
   { title: 'Total Laporan', value: stats.totalLaporan, icon: FileText },
@@ -127,11 +126,10 @@ const handleDetail = (laporan: any) => {
 
   return (
     <div className="h-screen relative">
-      {/* Sidebar */}
+
 
         <AdminSidebar menus={adminMenus} onToggle={setSidebarOpen} />
 
-        {/* Main Content */}
         <main className=
             {cn(
                 "transition-all duration-300 min-h-screen",

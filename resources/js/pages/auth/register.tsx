@@ -1,3 +1,4 @@
+
 import { login } from '@/routes';
 import { store } from '@/routes/register';
 import { Form, Head } from '@inertiajs/react';
@@ -13,20 +14,20 @@ import { Eye, EyeOff } from 'lucide-react';
 export default function Register() {
     const [showPassword, setShowPassword] = useState(false);
 const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
     return (
         <div className="w-full min-h-screen flex items-center justify-center p-4">
 
-            {/* <Head title="Register"  /> */}
-
             <div className="gap-10 overflow-hidden flex items-center flex-col md:flex-row w-full max-w-5xl">
                 <div className="md:w-1/2 w-full flex items-center justify-center p-6">
+
                     <img
                         src="/images/bglogin.png"
                         alt="register"
                         className="w-auto h-auto max-w-[300px] md:max-w-md"
                     />
                 </div>
-                {/* buat shadow belom ok */}
+
                 <div className="md:w-[420px] w-80 mx-auto p-8 bg-gradient-to-b from-[#E8F3FF] to-[#F7FAFF] dark:bg-none dark:bg-[#1E293B] shadow-lg rounded-3xl">
                     <h2 className="text-[#1C398E] dark:text-[#F1F5F9] text-3xl font-semibold mb-5">Register</h2>
                     <Form
@@ -70,6 +71,7 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
                                     <div className="grid gap-2">
                                         <div className="relative">
+
                                             <Input
                                                 className="pr-10 border-0 border-b border-b-[#1C398E] focus:rounded-lg text-[#1C398E] dark:border-b-[#94A3B8] dark:text-[#F1F5F9] focus:border-b-blue-400 transition-all duration-200 focus:outline-none focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 w-full"
                                                 id="password"
@@ -89,6 +91,7 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
                                                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                                             </button>
                                         </div>
+
                                         <InputError message={errors.password} />
                                     </div>
 

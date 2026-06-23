@@ -106,10 +106,10 @@ const handleDetail = (laporan: any) => {
 
   return (
     <div className="relative h-screen ">
-      {/* Sidebar */}
+
       <BpbdSidebar menus={BpbdMenus} onToggle={setSidebarOpen}  />
 
-      {/* Main Content */}
+      
       <main className={cn(
                 "transition-all duration-300 min-h-screen",
                 sidebarOpen

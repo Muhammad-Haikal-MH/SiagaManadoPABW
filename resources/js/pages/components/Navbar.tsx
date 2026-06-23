@@ -40,7 +40,7 @@ const { appearance, updateAppearance } = useAppearance();
 
   const handleLogout = () => post(logout().url);
 
-  // ACTIVE MENU
+  // active menu
   const isActive = (path: string) => {
     if (path === "/") {
         return url === "/"
@@ -53,7 +53,7 @@ const { appearance, updateAppearance } = useAppearance();
         : "text-[#1C398E] dark:text-[#F1F5F9] dark:hover:text-[#3B82F6] hover:text-blue-300";
     };
 
-  // SCROLL BLUR EFFECT
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
@@ -65,7 +65,7 @@ const { appearance, updateAppearance } = useAppearance();
 
   return (
     <>
-      {/* NAVBAR */}
+      {/* nav ny */}
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-300
         ${scrolled ? "backdrop-blur-md bg-white/50 dark:bg-white/10 " : "bg-transparent"}
@@ -85,7 +85,7 @@ const { appearance, updateAppearance } = useAppearance();
             className="w-44 hidden dark:block"
           />
 
-          {/* DESKTOP MENU */}
+          {/* lebar  */}
           <div className="hidden md:flex items-center gap-6">
             {menus.map((menu) => (
               <Link
@@ -167,7 +167,7 @@ const { appearance, updateAppearance } = useAppearance();
             )}
           </div>
 
-          {/* BURGER BUTTON */}
+          {/* burger */}
           <button
             onClick={() => setOpen(true)}
             className="md:hidden text-2xl text-[#1C398E] dark:text-[#F1F5F9] cursor-pointer"
@@ -177,7 +177,7 @@ const { appearance, updateAppearance } = useAppearance();
         </div>
       </nav>
 
-      {/* BACKDROP */}
+      {/* bg ny */}
       <div
         className={`fixed inset-0 bg-black/40 z-40 transition
         ${open ? "opacity-100 visible" : "opacity-0 invisible"}
@@ -185,7 +185,7 @@ const { appearance, updateAppearance } = useAppearance();
         onClick={() => setOpen(false)}
       />
 
-      {/* SIDEBAR MOBILE */}
+      {/* sidebar hape */}
       <aside
         className={`fixed top-0 right-0 h-full w-64 bg-white/70 dark:bg-gray-900/50 backdrop-blur-md z-50 p-6 transform transition-transform duration-300
         ${open ? "translate-x-0" : "translate-x-full"}
@@ -258,7 +258,7 @@ const { appearance, updateAppearance } = useAppearance();
         </div>
       </aside>
 
-      {/* SPACER */}
+      {/* space */}
       <div className="h-20" />
     </>
   );

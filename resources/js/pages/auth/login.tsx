@@ -30,7 +30,7 @@ export default function Login({
             <Head title="Login" />
 
             <div className="gap-10 overflow-hidden flex items-center flex-col md:flex-row w-full max-w-5xl">
-                {/* LEFT IMAGE */}
+                
                 <div className="md:w-1/2 w-full flex items-center justify-center p-6">
                     <img
                         src="/images/bglogin.png"
@@ -39,7 +39,7 @@ export default function Login({
                     />
                 </div>
 
-                {/* CARD */}
+
                 <div className="md:w-[420px] w-80 h-fit mx-auto p-8 bg-gradient-to-b from-[#E8F3FF] to-[#F7FAFF] dark:bg-none dark:bg-[#1E293B] shadow-lg rounded-3xl">
                     <h2 className="text-[#1C398E] dark:text-[#F1F5F9] text-3xl font-semibold mb-5">
                         Login
@@ -53,7 +53,7 @@ export default function Login({
                         {({ processing, errors }) => (
                             <>
                                 <div className="grid gap-6 font-normal">
-                                    {/* EMAIL */}
+
                                     <div className="grid gap-2">
                                         <Input
                                             id="email"
@@ -73,7 +73,7 @@ export default function Login({
                                         <InputError message={errors.email} />
                                     </div>
 
-                                    {/* PASSWORD */}
+
                                     <div className="grid gap-2">
                                         <div className="relative">
                                             <Input
@@ -103,7 +103,7 @@ export default function Login({
                                         <InputError message={errors.password} />
                                     </div>
 
-                                    {/* REMEMBER + FORGOT */}
+
                                     <div className="flex items-center justify-between text-sm">
                                         <label className="flex items-center gap-2 text-[#1C398E] dark:text-[#F1F5F9]">
                                             <Checkbox
@@ -124,7 +124,7 @@ export default function Login({
                                         )}
                                     </div>
 
-                                    {/* BUTTON */}
+
                                     <Button
                                         type="submit"
                                         className="mt-2 w-full bg-[#1C398E] text-white hover:bg-[#294db7] dark:text-[#1C398E] dark:bg-[#CFE6FF] dark:hover:bg-blue-300 rounded-xl cursor-pointer"
@@ -137,7 +137,7 @@ export default function Login({
                                     </Button>
                                 </div>
 
-                                {/* REGISTER LINK */}
+
                                 {canRegister && (
                                     <div className="text-center text-sm text-[#6a6c6e] dark:text-[#F1F5F9]">
                                         Don't have an account?{' '}

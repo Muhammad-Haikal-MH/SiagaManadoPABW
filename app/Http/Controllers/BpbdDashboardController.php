@@ -34,7 +34,7 @@ class BpbdDashboardController extends Controller
                 'laporanSelesai'   => Laporan::where('status', 'selesai')->count(),
             ],
 
-            // BPBD LIHAT SEMUA LAPORAN YANG SUDAH DIVERIFIKASI
+            
             'laporans' => Laporan::whereIn('status', [
                 'diverifikasi',
                 'diproses',

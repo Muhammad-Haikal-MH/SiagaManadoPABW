@@ -20,14 +20,14 @@ const Berita = (props: Props) => {
     <>
       <Navbar auth={auth} />
       <Layout>
-        {/* WEATHER SECTION */}
+        {/* cuaca */}
         <div className="px-6 md:px-14 mt-8">
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm overflow-hidden border border-slate-100 dark:border-slate-700">
             <Weather />
           </div>
         </div>
 
-        {/* BERITA GRID */}
+        {/* grid brita */}
         <div className="px-6 md:px-14 mt-10 mb-20">
           <div className="flex items-center justify-between mb-8">
             <h1 className="text-3xl font-bold text-slate-800 dark:text-white">Berita Terkini</h1>
@@ -53,7 +53,7 @@ const Berita = (props: Props) => {
                   </div>
                 </div>
 
-                {/* Content */}
+                {/* isi brita */}
                 <div className="p-6 flex flex-col flex-grow">
                   <div className="flex items-center justify-between gap-2 text-slate-500 dark:text-slate-400 text-xs mb-3">
                     <span>{berita.tanggal}</span>

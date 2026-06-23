@@ -17,7 +17,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
             <div className="w-full min-h-screen flex items-center justify-center p-4">
                 <div className="gap-10 overflow-hidden flex items-center flex-col md:flex-row w-full max-w-5xl">
 
-                    {/* LEFT IMAGE */}
+                    
                     <div className="md:w-1/2 w-full flex items-center justify-center p-6">
                         <img
                             src="/images/lupapw.png"
@@ -26,7 +26,7 @@ export default function ForgotPassword({ status }: { status?: string }) {
                         />
                     </div>
 
-                    {/* CARD */}
+
                     <div className="md:w-[420px] w-80 mx-auto p-8 bg-gradient-to-b from-[#E8F3FF] to-[#F7FAFF] dark:bg-none dark:bg-[#1E293B] shadow-lg rounded-3xl">
                         <h2 className="text-[#1C398E] dark:text-[#F1F5F9] text-3xl font-semibold mb-2">
                             Forgot Password

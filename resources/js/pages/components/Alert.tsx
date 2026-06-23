@@ -44,7 +44,7 @@ export const swalDetailLaporan = (laporan: any) => {
     html: `
       <div class="text-left text-sm text-slate-700 space-y-4">
 
-        <!-- Header -->
+
         <div class="flex justify-between items-center">
           <h2 class="text-lg font-semibold text-[#1C398E]">
             Informasi Laporan
@@ -67,7 +67,7 @@ export const swalDetailLaporan = (laporan: any) => {
           </span>
         </div>
 
-        <!-- Grid info -->
+
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <p class="text-xs text-slate-500">Nama Pelapor</p>
@@ -95,7 +95,7 @@ export const swalDetailLaporan = (laporan: any) => {
           <p class="font-medium">${laporan.lokasi}</p>
         </div>
 
-        <!-- Deskripsi -->
+
         <div>
           <p class="text-xs text-slate-500 mb-1">Deskripsi</p>
           <div class="bg-slate-100 rounded-xl p-3 text-sm leading-relaxed">
@@ -103,7 +103,7 @@ export const swalDetailLaporan = (laporan: any) => {
           </div>
         </div>
 
-        <!-- Foto -->
+
         ${
           laporan.foto
             ? `
@@ -140,7 +140,7 @@ export const swalDetailBerita = (berita: any) => {
     html: `
       <div class="text-left text-sm text-slate-700 space-y-4">
 
-        <!-- Header -->
+        
         <div class="flex justify-between items-center">
           <h2 class="text-lg font-semibold text-[#1C398E]">
             Informasi Laporan
@@ -159,7 +159,7 @@ export const swalDetailBerita = (berita: any) => {
           </span>
         </div>
 
-        <!-- Grid info -->
+
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <p class="text-xs text-slate-500">Judul Berita</p>
@@ -182,7 +182,7 @@ export const swalDetailBerita = (berita: any) => {
           <p class="font-medium">${berita.lokasi}</p>
         </div>
 
-        <!-- Deskripsi -->
+
         <div>
           <p class="text-xs text-slate-500 mb-1">Deskripsi</p>
           <div class="bg-slate-100 rounded-xl p-3 text-sm leading-relaxed">
@@ -190,7 +190,7 @@ export const swalDetailBerita = (berita: any) => {
           </div>
         </div>
 
-        <!-- Foto -->
+
         ${
           berita.foto
             ? `

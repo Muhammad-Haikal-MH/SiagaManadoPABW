@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Laporan;
@@ -11,18 +10,19 @@ use Illuminate\Http\Request;
 
 class AdminDashboardController extends Controller
 {
+
     public function index()
     {
+
         $laporanPerBulan = Laporan::select(
-            DB::raw("MONTH(tanggal) as bulan"),
-            DB::raw("COUNT(*) as total")
+            DB::raw("MONTH(tanggal) as mount"),
+            DB::raw("COUNT(*) as count")
         )->groupBy('bulan')->orderBy('bulan')->get();
 
         $laporanSelesaiPerBulan = Laporan::select(
             DB::raw("MONTH(tanggal) as bulan"),
             DB::raw("COUNT(*) as total")
         )->where('status', 'selesai')->groupBy('bulan')->orderBy('bulan')->get();
-
         return Inertia::render('admin/homepage', [
             'stats' => [
                 'totalUsers' => User::count(),
@@ -40,6 +40,7 @@ class AdminDashboardController extends Controller
 
     public function updateStatus(Laporan $laporan)
     {
+
         request()->validate([
             'status' => 'required|in:menunggu,diverifikasi,ditolak,diproses,selesai'
         ]);
@@ -48,21 +49,17 @@ class AdminDashboardController extends Controller
             'status' => request('status')
         ]);
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Laporan berhasil diupdate menjadi diproses',
-            'data'    => $laporan
-        ], 200);
+        return back()->with('success', 'Status diperbarui');
     }
 
     public function destroy(Laporan $laporan)
     {
+
         $laporan->delete();
-        return response()->json([
-            'success' => true,
-            'message' => 'Laporan berhasil dihapus',
-            'data'    => $laporan
-        ], 200);
+
+        return back()->with('success', 'Laporan dihapus');
     }
 
 }
+
+

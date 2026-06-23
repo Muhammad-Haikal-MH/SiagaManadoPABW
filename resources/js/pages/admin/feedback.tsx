@@ -16,10 +16,10 @@ const DashboardFeedback = (props: Feedback) => {
 
   return (
     <div className="relative h-screen">
-      {/* Sidebar */}
+
       <AdminSidebar menus={adminMenus} onToggle={setSidebarOpen} />
 
-      {/* Main Content */}
+
       <main
         className={cn(
                 "transition-all duration-300 min-h-screen",

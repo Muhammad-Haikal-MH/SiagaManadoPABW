@@ -53,7 +53,7 @@ export default function BpbdSidebar({ menus, onToggle }: Props) {
         sidebarOpen ? "w-64" : "w-20"
     )}
     >
-      {/* HEADER */}
+     
       <div className="p-4 border-b border-[#CFE6FF] dark:border-[#1C398E] flex items-center justify-between">
         {sidebarOpen && (
             <h1 className="text-xl font-bold text-[#1C398E] dark:text-[#F1F5F9]">BPBD Panel</h1>
@@ -69,7 +69,7 @@ export default function BpbdSidebar({ menus, onToggle }: Props) {
         </button>
       </div>
 
-      {/* MENU */}
+      {/* menu */}
       <nav className="flex-1 p-4">
         {menus.map((item) => (
           <Link
@@ -85,7 +85,7 @@ export default function BpbdSidebar({ menus, onToggle }: Props) {
         ))}
       </nav>
 
-      {/* PROFILE */}
+      {/* pp */}
       {user && (
         <div className="p-4 border-t border-[#CFE6FF] dark:border-[#1C398E] flex items-center justify-between gap-2">
           <DropdownMenu modal={false}>
